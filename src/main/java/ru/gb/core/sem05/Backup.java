@@ -1,6 +1,7 @@
 package ru.gb.core.sem05;
 
 import java.io.*;
+import java.util.Objects;
 
 public class Backup {
     public static void main(String[] args) throws IOException {
@@ -28,11 +29,9 @@ public class Backup {
      */
 
     private static void copyDirectory(File source, File destination) throws IOException {
-        if (!destination.exists()) {
-            destination.mkdir();
-        }
+        if (!destination.exists()) destination.mkdir();
 
-        for (File file : source.listFiles()) {
+        for (File file : Objects.requireNonNull(source.listFiles())) {
 
                 if (file.isDirectory()) {
                     copyDirectory(file, new File(destination, file.getName()));

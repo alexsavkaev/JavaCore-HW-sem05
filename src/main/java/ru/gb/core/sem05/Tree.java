@@ -23,22 +23,20 @@ public class Tree {
             return;
         }
         int subdirTotal = 0;
-        for (int i = 0; i < files.length; i++) {
-            if (files[i].isDirectory())
-            {
+        for (File value : files) {
+            if (value.isDirectory()) {
                 subdirTotal++;
             }
         }
         int subdirCounter = 0;
-        for (int i = 0; i < files.length; i++) {
-            if (files[i].isDirectory())
-            {
-                print(files[i],indent, subdirTotal==++subdirCounter);
+        for (File value : files) {
+            if (value.isDirectory()) {
+                print(value, indent, subdirTotal == ++subdirCounter);
 
-            }else {
+            } else {
                 System.out.print(indent);
-                    System.out.print("└─");
-                System.out.println(files[i].getName());
+                System.out.print("└─");
+                System.out.println(value.getName());
             }
         }
     }
